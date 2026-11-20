@@ -19,6 +19,16 @@ python -m pytest
 
 In PowerShell, activate the environment with `.\.venv\Scripts\Activate.ps1`.
 
+## Dataset exploration
+
+Generate the dataset summary and plots locally:
+
+```sh
+python -m digit_recognition.explore --output-dir reports/digits
+```
+
+The command writes `summary.json`, `sample_digits.png` and `class_distribution.png`. The dataset contains 174–183 samples per class, with pixel values ranging from 0 to 16. The classes are roughly balanced.
+
 ## Project layout
 
 - `src/digit_recognition/` contains the Python package.
@@ -28,4 +38,4 @@ In PowerShell, activate the environment with `.\.venv\Scripts\Activate.ps1`.
 - [ROADMAP.md](ROADMAP.md) outlines the planned experiments and features.
 - [LICENSE](LICENSE) contains the MIT license.
 
-The package and dataset checks are in place. Model training is planned next.
+The package, dataset checks and exploration tools are in place. The next step is defining the evaluation protocol.
