@@ -29,6 +29,16 @@ python -m digit_recognition.explore --output-dir reports/digits
 
 The command writes `summary.json`, `sample_digits.png` and `class_distribution.png`. The dataset contains 174–183 samples per class, with pixel values ranging from 0 to 16. The classes are roughly balanced.
 
+## Majority-class baseline
+
+Run a reproducible five-fold stratified cross-validation baseline on the training partition:
+
+```sh
+python -m digit_recognition.baseline --output reports/digits/baseline.json
+```
+
+The baseline always predicts the most frequent class in each training fold. It provides a reference point for future classifiers, not a useful recognition model. On the default split and seed, mean cross-validation accuracy is approximately 10.09% and balanced accuracy is 10.00%. The held-out test partition is not evaluated during this step.
+
 ## Project layout
 
 - `src/digit_recognition/` contains the Python package.
@@ -38,4 +48,4 @@ The command writes `summary.json`, `sample_digits.png` and `class_distribution.p
 - [ROADMAP.md](ROADMAP.md) outlines the planned experiments and features.
 - [LICENSE](LICENSE) contains the MIT license.
 
-The package, dataset checks and exploration tools are in place. The next step is defining the evaluation protocol.
+Dataset exploration, a reproducible held-out partition, and a training-only majority-class baseline are available. Candidate models will be evaluated using the same training-only protocol.
