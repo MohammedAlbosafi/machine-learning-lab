@@ -39,6 +39,16 @@ python -m digit_recognition.baseline --output reports/digits/baseline.json
 
 The baseline always predicts the most frequent class in each training fold. It provides a reference point for future classifiers, not a useful recognition model. On the default split and seed, mean cross-validation accuracy is approximately 10.09% and balanced accuracy is 10.00%. The held-out test partition is not evaluated during this step.
 
+## Candidate model comparison
+
+Compare the majority-class baseline, logistic regression, RBF support vector machine and five-neighbor classifier using identical stratified validation folds:
+
+```sh
+python -m digit_recognition.compare --output reports/digits/comparison.json
+```
+
+The report includes mean accuracy, fold-level accuracy, standard deviation and mean balanced accuracy. Scaling is fitted within each training fold for the three candidate models. The held-out test partition is reserved for final evaluation.
+
 ## Project layout
 
 - `src/digit_recognition/` contains the Python package.
@@ -48,4 +58,4 @@ The baseline always predicts the most frequent class in each training fold. It p
 - [ROADMAP.md](ROADMAP.md) outlines the planned experiments and features.
 - [LICENSE](LICENSE) contains the MIT license.
 
-Dataset exploration, a reproducible held-out partition, and a training-only majority-class baseline are available. Candidate models will be evaluated using the same training-only protocol.
+Dataset exploration, a reproducible held-out partition, and a training-only majority-class baseline are available. Candidate models can be compared using the same training-only protocol.
