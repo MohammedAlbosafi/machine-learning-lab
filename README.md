@@ -49,6 +49,16 @@ python -m digit_recognition.compare --output reports/digits/comparison.json
 
 The report includes mean accuracy, fold-level accuracy, standard deviation and mean balanced accuracy. Scaling is fitted within each training fold for the three candidate models. The held-out test partition is reserved for final evaluation.
 
+## Hyperparameter search
+
+Search 20 candidate configurations using five identical stratified validation folds:
+
+```sh
+python -m digit_recognition.tune --output reports/digits/tuning.json
+```
+
+The report records every configuration's mean and standard deviation of validation accuracy, the best settings per model, and the selected model. Scaling is fitted within each fold. The held-out test set is not scored, and the selected estimator is not refitted during the search.
+
 ## Project layout
 
 - `src/digit_recognition/` contains the Python package.
